@@ -78,6 +78,11 @@ export default class Webgl {
 		this.program.resolution = this.GL.getUniformLocation(this.program,'resolution');
 		this.uniforms.resolution = {x:window.innerWidth,y:window.innerHeight};
 		this.GL.uniform2f(this.program.resolution,this.uniforms.resolution.x,this.uniforms.resolution.y);
+
+		// set to center
+		this.program.mouse = this.GL.getUniformLocation(this.program,'mouse');
+		this.uniforms.mouse = {x:0,y:0};
+		this.GL.uniform2f(this.program.mouse,this.uniforms.mouse.x,this.uniforms.mouse.y);
 	}
 
 	draw() {
@@ -87,6 +92,12 @@ export default class Webgl {
 
 		this.GL.clear(this.GL.COLOR_BUFFER_BIT);
 		this.GL.drawArrays(this.GL.TRIANGLE_STRIP,0,this.vertices.length/2);
+
+	}
+	mousemove(x,y) {
+		this.uniforms.mouse = {x:x,y:y};
+		this.GL.uniform2f(this.program.mouse,this.uniforms.mouse.x,this.uniforms.mouse.y);
+		
 
 	}
 	resize(width,height) {

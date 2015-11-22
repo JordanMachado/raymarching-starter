@@ -1,5 +1,6 @@
 precision highp float;
 uniform float time;
+uniform vec2 mouse;
 varying vec2 uv;
 
 float plane(vec3 pos) {
@@ -18,13 +19,17 @@ void main(){
 	vec3 color = vec3(0.0);
 
 	
-	for(int i = 0;i<64;i++) {
+	/*for(int i = 0;i<64;i++) {
 		float d = map(pos);
 		if(d<.01) {
 			color = fract(pos*.5);
 			break;
 		}
 		pos+= d * dir;
+	}*/
+	if(distance(uv,mouse) > 0.2) {
+			color = vec3(1.0);
+
 	}
 
 	
