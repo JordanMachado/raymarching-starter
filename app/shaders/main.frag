@@ -19,20 +19,18 @@ void main(){
 	vec3 color = vec3(0.0);
 
 	
-	/*for(int i = 0;i<64;i++) {
+	for(int i = 0;i<64;i++) {
 		float d = map(pos);
 		if(d<.01) {
 			color = fract(pos*.5);
 			break;
 		}
 		pos+= d * dir;
-	}*/
-	if(distance(uv,mouse) > 0.2) {
+	}
+	if(distance(uv,mouse) > 0.5) {
 			color = vec3(1.0);
 
 	}
-
-	
 
 	gl_FragColor = vec4(color,1.0);
 }

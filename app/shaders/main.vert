@@ -1,6 +1,5 @@
 attribute vec2 position;
 uniform vec2 resolution;
-uniform vec2 mouse;
 varying vec2 uv;
 
 void main(){
