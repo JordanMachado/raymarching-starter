@@ -11,6 +11,7 @@ export default class Webgl {
 
 
 		this.GL = this.canvas.getContext('experimental-webgl');
+		this.GL.viewport(0, 0, this.canvas.width, this.canvas.height);
 		this.GL.clearColor(1,0,1,1);
 
 
@@ -80,16 +81,27 @@ export default class Webgl {
 	}
 
 	draw() {
-
-		// this.uniforms.time.value  =   0.0025*(Date.now() - start_time);
-		// this.GL.uniform1f(this.uniforms.time,this.uniforms.time.value)
+		// update time
+		this.uniforms.time  =   0.0025*(Date.now() - start_time);
+		this.GL.uniform1f(this.program.time,this.uniforms.time);
 
 		this.GL.clear(this.GL.COLOR_BUFFER_BIT);
 		this.GL.drawArrays(this.GL.TRIANGLE_STRIP,0,this.vertices.length/2);
 
 	}
 	resize(width,height) {
-		canvas.width = width;
-		canvas.height = height;
+		// resize canvas
+		this.canvas.width = width;
+		this.canvas.height = height;
+		this.uniforms.resolution = {x:width,y:height};
+
+		// update viewport
+		this.GL.viewport(0, 0, this.canvas.width, this.canvas.height);
+
+		// update resolution
+		this.GL.uniform2f(this.program.resolution,this.uniforms.resolution.x,this.uniforms.resolution.y);
+		
+
+
 	}
 }

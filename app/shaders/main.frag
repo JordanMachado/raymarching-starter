@@ -9,10 +9,10 @@ float sphere(vec3 pos,float radius) {
 	return length(pos) - radius;
 }
 float map(vec3 pos) {
-	return plane(pos);
+	return min(plane(pos),sphere(pos-5.0,5.0));
 }
 void main(){
-	vec3 pos = vec3(0.0,5.0,-10.0);
+	vec3 pos = vec3(sin(time*0.1)* 10.0,5.0,-10.0);
 	vec3 dir = normalize(vec3(uv,1.0));
 
 	vec3 color = vec3(0.0);
