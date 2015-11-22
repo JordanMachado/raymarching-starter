@@ -23,6 +23,6 @@ npm start
 npm run build
 ```
 
-Structure inspired by Valentin's threejs starter
+Structure inspired by [Valentin's](https://github.com/vdaguenet "Valentin's") threejs starter kit
 
-[Valentin's](https://github.com/vdaguenet "Valentin's")
+
